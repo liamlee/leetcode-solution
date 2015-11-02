@@ -35,8 +35,12 @@ Subscribe to see which companies asked this question
 """
 
 #Analysis
+'''
+1 root is left -> right traversal
+2 when traversal is left -> right, push (left,right) child to stack
+3 when traversal is right -> left, push (right,left) child to stack
 
-
+'''
 
 #Solution code
 # Definition for a binary tree node.
@@ -55,6 +59,8 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        if root is None :
+          return []
         zigzag_level_order = []
         to_travl = [root]
         travl_flag = 'left'
@@ -87,13 +93,17 @@ class Solution(object):
 if __name__ == '__main__':
   list1 = ["3","9","20","#","#","15","7"]
   list2 = ["1","2","3","#","#","4","#","#","5"]
+  list3 = None
+  list4 = [[1,2,3,4,5]]
 
   BT = BinaryTree()
   s = Solution()
 
   print s.zigzagLevelOrder(BT.buildTree(list1))
   print s.zigzagLevelOrder(BT.buildTree(list2))
-  #print s.zigzagLevelOrder(BT.buildTree(list3))
+  print s.zigzagLevelOrder(BT.buildTree(list3))
+  print s.zigzagLevelOrder(BT.buildTree(list4))
+
 
 
 
