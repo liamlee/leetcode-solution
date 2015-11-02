@@ -34,3 +34,29 @@ class BinaryTree():
 			i += 1
 
 		return bTree[0]
+
+	def printTree(self,root):
+		if root is None:
+			print (None)
+		to_travl = [root]
+
+		while to_travl:
+			cur_node = to_travl.pop()
+			if cur_node is None:
+				print("#")
+				continue
+			print(cur_node.val)
+			to_travl.insert(0,cur_node.left)
+			to_travl.insert(0,cur_node.right)
+
+if __name__ == '__main__':
+	list1 = ["3","9","20","#","#","15","7"]
+	list2 = ["1","2","3","#","#","4","#","#","5"]
+	list3 = ['1','2','3','4','5']
+	bt = BinaryTree()
+	print(bt.printTree(bt.buildTree(list1)))
+	print(bt.printTree(bt.buildTree(list2)))
+	print(bt.printTree(bt.buildTree(list3)))
+
+
+

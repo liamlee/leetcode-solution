@@ -77,13 +77,18 @@ class Solution(object):
                 to_travl.append(cur_node.left)
               if cur_node.right :
                 to_travl.append(cur_node.right)
-              travl_flag = 'right'
+              #travl_flag = 'right'
             else :
               if cur_node.right :
                 to_travl.append(cur_node.right)
               if cur_node.left :
                 to_travl.append(cur_node.left)
-              travl_flag = 'left'
+              #travl_flag = 'left'
+          #一层遍历完了，才改变方向标识
+          if travl_flag == 'left' :
+            travl_flag = 'right'
+          else :
+            travl_flag = 'left'
           #print zigzag_level_item
           zigzag_level_order.append(zigzag_level_item)
 
@@ -94,7 +99,7 @@ if __name__ == '__main__':
   list1 = ["3","9","20","#","#","15","7"]
   list2 = ["1","2","3","#","#","4","#","#","5"]
   list3 = None
-  list4 = [[1,2,3,4,5]]
+  list4 = ['1','2','3','4','5']
 
   BT = BinaryTree()
   s = Solution()
