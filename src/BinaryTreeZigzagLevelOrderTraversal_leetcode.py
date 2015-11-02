@@ -46,7 +46,8 @@ Subscribe to see which companies asked this question
 #         self.left = None
 #         self.right = None
 
-from BinaryTreeLevelOrderTraversal import BTree,TreeNode
+#from BinaryTreeLevelOrderTraversal import BTree,TreeNode
+from BinaryTree import BinaryTree
 
 class Solution(object):
     def zigzagLevelOrder(self, root):
@@ -87,7 +88,7 @@ if __name__ == '__main__':
   list1 = ["3","9","20","#","#","15","7"]
   list2 = ["1","2","3","#","#","4","#","#","5"]
 
-  BT = BTree()
+  BT = BinaryTree()
   s = Solution()
 
   print s.zigzagLevelOrder(BT.buildTree(list1))
