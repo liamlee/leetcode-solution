@@ -36,6 +36,63 @@ import time
 # Solution code
 class Solution(object):
 
+	# 大神的代码啊，简洁、高效，果然差距！！！
+	def shortestPalindrome(self, str):
+		l = len(str)
+		revstr = str[::-1]
+		for i in xrange(l):
+			if str[:(l-i+1)/2] == revstr[i:(l+i+1)/2]:
+				return  revstr[:i] + str
+
+		return  revstr[:-1] + str
+
+	#擦，依然超时
+	def shortestPalindrome(self,s):
+		s_len = len(s)
+		p_len = s_len
+		if s_len == 0 :
+			return ''
+
+		while p_len >= 1:
+			ss = s[:p_len]
+			mid = p_len / 2
+			#print p_len,mid
+			s1 = ss[:mid]
+			s2 = ss[p_len-mid:]
+			#print s1,s2
+			if s1 == s2[::-1] :
+				adding_s = s[p_len:]
+				return adding_s[::-1] + s
+			p_len -= 1
+
+'''
+	def shortestPalindrome_timeout_2(self,s):
+		s_len = len(s)
+		if s_len == 0:
+			return ''
+		i = 0
+		j = s_len - 1
+		r_len = 0
+
+		while i < j :
+			#print r_len
+			if s[i] == s[j] :
+				#print s[i:j]
+				if self.is_palindrome_2(s[i+1:j]) :
+					break
+				else :
+					i = 0
+					r_len += 1
+					j = s_len - 1 - r_len
+			else :
+				i = 0
+				r_len += 1
+				j = s_len - 1 - r_len
+
+		adding_s = s[s_len - r_len :]
+
+		return adding_s[::-1]+s
+
 	#自测挺快的啊，怎么就超时了！？ 20151105
     def shortestPalindrome_timeout(self, s):
         """
@@ -81,11 +138,12 @@ class Solution(object):
     		i += 1
     		j += 1
     	return True
-
+'''
 
 if __name__ == '__main__':
 	s = Solution()
 	assert s.shortestPalindrome('aacecaaa') == 'aaacecaaa'
+	#print s.shortestPalindrome('aacecaaa') 
 	assert s.shortestPalindrome('abcd') == 'dcbabcd'
 	assert s.shortestPalindrome('a') == 'a'
 	assert s.shortestPalindrome('aaa') == 'aaa'
@@ -99,3 +157,5 @@ if __name__ == '__main__':
 	ticks_2 = time.time()
 
 	print ticks_2 - ticks_1
+
+
